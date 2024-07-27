@@ -1,0 +1,66 @@
+<app-header></app-header>
+
+<h1>Hello Angular {{title}}</h1>
+
+<app-user-list> </app-user-list>
+<app-login></app-login>
+<button (click)="getName()">Click Me</button>
+
+<p *ngIf="show else elseBlock">
+    ayu
+</p>
+
+<ng-template #elseBlock>
+    ayuu
+</ng-template>
+
+<h3>{{titleForm}}</h3>
+<form #basicForm="ngForm" (ngSubmit)="getData(basicForm.value)">
+    <input type="text" ngModel name="user" placeholder="Enter name">
+    <br> <br>
+    <input type="email" ngModel name="email" placeholder="Enter email">
+    <br> <br>
+    <input type="password" ngModel name="password" placeholder="Enter password">
+    <br> <br>
+    <button>Register</button>
+</form>
+
+<ul>
+    <li>{{userData.user}}</li>
+    <li>{{userData.email}}</li>
+    <li>{{userData.password}}</li>
+</ul>
+
+<h3 *ngIf="display">Toggle Display</h3>
+<button (click)="toggle()">Toggle</button>
+<br> <br>
+<mat-slide-toggle>Toggle me!</mat-slide-toggle>
+
+<div class="example-label">Raised</div>
+<div class="example-button-row">
+    <button mat-raised-button>Basic</button>
+    <button mat-raised-button disabled>Disabled</button>
+    <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
+</div>
+<br> <br>
+<h6>------- To-Do List -------</h6>
+
+<input type="text" placeholder="Enter New Task" #task>
+<br><br>
+<button (click)="addTask(task.value)">Add Task</button>
+<br> <br>
+<ul *ngFor="let item of list">
+    <li>{{item.name}} <button (click)="removeTask(item.id)">Remove</button></li>
+</ul>
+
+<app-child [item]="data"></app-child>
+
+<button (click)="updateChild()">Update Child Component</button>
+<br><br>
+<ul *ngFor="let user of userDetails">
+    <app-user-details [item]="user"></app-user-details>
+</ul>
+
+<hr>
+
+<app-child-one (updateDataEvent)="updateData($event)"></app-child-one>
